@@ -36,7 +36,7 @@ function applyRankingColors() {
     rankings.forEach(rank => {
         let value = parseInt(rank.textContent);
 
-        if (value >= 9) {
+        if (value === 10) {
             rank.parentElement.classList.add("blue-rating");
         } else if (value >= 7) {
             rank.parentElement.classList.add("green-rating");
