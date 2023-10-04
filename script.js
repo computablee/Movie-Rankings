@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', function () {
-    fetch("./movies.ssv").then(res => {
-        populateTableFromCSV(res.text);
+    fetch("https://raw.githubusercontent.com/computablee/Movie-Rankings/main/movies.ssv").then(res => res.text()).then(csvData => {
+        populateTableFromCSV(csvData);
         applyRankingColors();
     })
 });
@@ -9,7 +9,13 @@ function populateTableFromCSV(csv) {
     const lines = csv.trim().split("\n");
     const tbody = document.querySelector("#rankings tbody");
 
-    lines.forEach(line => {
+    const sortedLines = lines.sort((a, b) => {
+        const ratingA = parseInt(a.split(";")[0]);
+        const ratingB = parseInt(b.split(";")[0]);
+        return ratingB - ratingA; // For descending order
+    });
+
+    sortedLines.forEach(line => {
         const [rating, title, director, comments] = line.split(";");
         const row = document.createElement("tr");
 
