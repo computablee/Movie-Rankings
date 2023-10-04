@@ -20,7 +20,7 @@ function populateTableFromCSV(csv) {
         const row = document.createElement("tr");
 
         row.innerHTML = `
-        <td><span class="rating">${rating}</span><span class="out-of">/10</span></td>
+        <td><span class="rating">${rating}</span><span class="out-of"> /10</span></td>
         <td>${title}</td>
         <td>${director}</td>
         <td>${comments}</td>
