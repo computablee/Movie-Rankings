@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    fetch("https://raw.githubusercontent.com/computablee/Movie-Rankings/main/movies.ssv").then(res => res.text()).then(csvData => {
+    fetch("movies.ssv").then(res => res.text()).then(csvData => {
         populateTableFromCSV(csvData);
         applyRankingColors();
     })
